@@ -1,0 +1,286 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="9"
+    tools:context=".DetailsActivity"
+    android:background="#15121f">
+
+    <TextView
+        android:textColor="#ffffff"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_gravity="center"
+        android:layout_weight="1"
+        android:gravity="center_horizontal"
+        android:text="@string/details"
+        android:textAlignment="center"
+        android:textSize="25sp" />
+    <!--<ImageView
+        android:id="@+id/image_view"
+        android:layout_gravity="center"
+        android:layout_weight="0.5"
+        android:layout_width="wrap_content"
+        android:layout_height="0dp" />
+        -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="#ffffff"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/country_name"
+            android:textAlignment="textEnd"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/country_name_detail_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/country_name"
+            android:textAlignment="textStart"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="#ffffff"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/total_cases"
+            android:textAlignment="textEnd"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/total_case_detail_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/country_name"
+            android:textAlignment="textStart"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="#ffffff"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/active_cases"
+            android:textAlignment="textEnd"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/active_case_detail_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/country_name"
+            android:textAlignment="textStart"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="#ffffff"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/new_cases"
+            android:textAlignment="textEnd"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/new_case_detail_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/country_name"
+            android:textAlignment="textStart"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+    </LinearLayout>
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="#ffffff"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/new_deaths"
+            android:textAlignment="textEnd"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/new_death_detail_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/country_name"
+            android:textAlignment="textStart"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="#ffffff"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="Total Deaths: "
+            android:textAlignment="textEnd"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/total_death_detail_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/country_name"
+            android:textAlignment="textStart"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="#ffffff"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/total_recovered"
+            android:textAlignment="textEnd"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/total_recov_detail_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/country_name"
+            android:textAlignment="textStart"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:orientation="horizontal">
+
+        <TextView
+            android:textColor="#ffffff"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/last_update__"
+            android:textAlignment="textEnd"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+
+        <TextView
+            android:textColor="#ffffff"
+            android:id="@+id/last_update_detail_view"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/country_name"
+            android:textAlignment="textStart"
+            android:textSize="25sp"
+            tools:ignore="RtlCompat" />
+    </LinearLayout>
+</LinearLayout>

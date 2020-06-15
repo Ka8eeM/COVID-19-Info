@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/apk/tools"
+    tools:context=".MainActivity">
+    <item
+        android:id="@+id/empty"
+        android:orderInCategory="100"
+        android:title=" "
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/linear_view"
+        android:icon="@drawable/ic_open_menu"
+        android:orderInCategory="100"
+        android:title="@string/vertical_view"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/grid_view"
+        android:icon="@drawable/ic_grid_on"
+        android:orderInCategory="100"
+        android:title="@string/grid_view"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/staggered_view"
+        android:icon="@drawable/ic_layout"
+        android:orderInCategory="100"
+        android:title="@string/staggered_vertical_view"
+        app:showAsAction="never" />
+    <item
+        android:id="@+id/search_icon"
+        android:icon="@drawable/ic_search"
+        android:title=""
+        app:actionViewClass="androidx.appcompat.widget.SearchView"
+        app:showAsAction="ifRoom|collapseActionView" />
+</menu>

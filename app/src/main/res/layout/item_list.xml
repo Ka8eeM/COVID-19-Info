@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/card_view"
+    android:layout_width="match_parent"
+    android:layout_height="150dp"
+    android:layout_margin="5dp"
+    android:background="#15121f"
+    app:cardCornerRadius="5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#15121f"
+        android:orientation="vertical"
+        android:weightSum="3">
+
+        <TextView
+            android:textSize="20sp"
+            android:textColor="#ffffff"
+            android:id="@+id/txt_view_country_name"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:layout_gravity="center|top"
+            android:layout_weight="0.5"
+            android:gravity="center|top"
+            android:text="@string/country_name"
+            android:textAlignment="center" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="2"
+            android:background="#15121f"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txt_view_confirmed"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/confirmed_cases"
+                    android:textAlignment="center"
+                    android:textColor="#a91d22"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txt_view_confirmed__"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_view_confirmed"
+                    android:gravity="center_horizontal"
+                    android:text="@string/confirmed_cases"
+                    android:textAlignment="center"
+                    android:textColor="#f0f0f1"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+            <View
+                style="@style/Divider"/>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txt_view_deaths"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/deaths"
+                    android:textAlignment="center"
+                    android:textColor="#808080"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txt_view_deaths__"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_view_deaths"
+                    android:gravity="center_horizontal"
+                    android:text="@string/deaths"
+                    android:textAlignment="center"
+                    android:textColor="#f0f0f1"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+            <View
+                style="@style/Divider"/>
+            <RelativeLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:gravity="center">
+
+                <TextView
+                    android:id="@+id/txt_view_recovered"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="@string/recovered"
+                    android:textAlignment="center"
+                    android:textColor="#2c9f39"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/txt_view_recovered__"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/txt_view_recovered"
+                    android:gravity="center_horizontal"
+                    android:text="@string/recovered"
+                    android:textAlignment="center"
+                    android:textColor="#f0f0f1"
+                    android:textSize="10sp" />
+            </RelativeLayout>
+        </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            android:orientation="horizontal"
+            android:weightSum="3">
+            <TextView
+                android:id="@+id/txt_view_lastupdate__"
+                android:layout_width="0dp"
+                android:layout_weight="1"
+                android:textAlignment="textEnd"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal|center_vertical"
+                android:text="@string/last_update"
+                android:textColor="#c8d3d1"
+                android:textSize="10sp"
+                tools:ignore="RtlCompat" />
+            <TextView
+                android:id="@+id/txt_view_lastupdate"
+                android:layout_width="0dp"
+                android:layout_weight="2"
+                android:layout_height="wrap_content"
+                android:text="@string/last_update"
+                android:textAlignment="textStart"
+                android:textColor="#ffffff"
+                android:gravity="center_horizontal|center_vertical"
+                tools:ignore="RtlCompat" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

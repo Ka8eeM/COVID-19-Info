@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">COVID-19</string>
+    <string name="country_name">Country: </string>
+    <string name="confirmed_cases">Confirmed</string>
+    <string name="deaths">Deaths</string>
+    <string name="recovered">Recovered</string>
+    <string name="last_update">Updated:    </string>
+    <string name="vertical_view">Vertical View</string>
+    <string name="grid_view">Grid View</string>
+    <string name="staggered_vertical_view">Staggered Vertical View</string>
+    <string name="details">Details</string>
+    <string name="active_cases">Active Cases:</string>
+    <string name="new_cases">New Cases:</string>
+    <string name="new_deaths">New Deaths:</string>
+    <string name="total_cases">Total Cases:</string>
+    <string name="total_recovered">Total Recovered:</string>
+    <string name="last_update__">"Last Update: "</string>
+
+</resources>
