@@ -20,7 +20,6 @@ public class DetailsActivity extends AppCompatActivity {
     TextView txtNewCases;
     TextView txtNewDeaths;
     TextView txtActive;
-    //ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

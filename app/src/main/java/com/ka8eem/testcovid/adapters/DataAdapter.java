@@ -55,7 +55,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.MyViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
-        //Log.e("Country Name", list.get(position).getCountryText());
         holder.txtCountryName.setText(list.get(position).getCountryText());
         holder.txtConfirmed.setText(list.get(position).getTotalCasesText());
         holder.txtRecovered.setText(list.get(position).getTotalRecoveredText());
@@ -86,7 +85,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.MyViewHolder> 
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             ArrayList<ItemModel> filteredList = new ArrayList<>();
-            Log.e("filteredList", fullList.size() + "");
             if (constraint == null || constraint.length() == 0) {
                 filteredList.addAll(fullList);
             } else {
@@ -100,7 +98,6 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.MyViewHolder> 
             }
             FilterResults results = new FilterResults();
             results.values = filteredList;
-            Log.e("results.values", filteredList.size() + "");
             return results;
         }
 

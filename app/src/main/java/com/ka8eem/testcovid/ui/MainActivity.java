@@ -49,7 +49,6 @@ public class MainActivity extends AppCompatActivity {
         dataViewModel.mutableLiveData.observe(this, new Observer<ArrayList<ItemModel>>() {
             @Override
             public void onChanged(ArrayList<ItemModel> models) {
-                Log.e("model size", models.size() + "");
                 list = models;
                 adapter.setList(models);
                 recyclerView.setAdapter(adapter);
@@ -72,7 +71,6 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                Log.e("newText", newText);
                 adapter.getFilter().filter(newText);
                 return true;
             }
