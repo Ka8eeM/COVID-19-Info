@@ -1,6 +1,7 @@
-package com.example.testcovid;
+package com.ka8eem.testcovid.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,39 +14,62 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.ka8eem.testcovid.models.ItemModel;
+import com.ka8eem.testcovid.R;
+import com.ka8eem.testcovid.ui.DetailsActivity;
+
+import java.io.Serializable;
 import java.util.ArrayList;
 
 public class DataAdapter extends RecyclerView.Adapter<DataAdapter.MyViewHolder> implements Filterable {
     Context context;
     ArrayList<ItemModel> list;
-    ArrayList<ItemModel> tempList;
-    LayoutInflater inflater;
-    OnItemListener itemListener;
+    ArrayList<ItemModel> fullList;
 
-    public DataAdapter(Context context, ArrayList<ItemModel> list, OnItemListener itemListener) {
-        this.list = list;
-        this.context = context;
-        tempList = new ArrayList<>(list);
-        inflater = LayoutInflater.from(context);
-        this.itemListener = itemListener;
+    public DataAdapter() {
+        list = new ArrayList<>();
     }
+
+    public DataAdapter(ArrayList<ItemModel> list) {
+        this.list = list;
+        fullList = new ArrayList<>(list);
+        notifyDataSetChanged();
+    }
+
+    public void setList(ArrayList<ItemModel> itemModels) {
+        this.list = new ArrayList<>();
+        this.list.addAll(itemModels);
+        fullList = new ArrayList<>(list);
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int position) {
-        View view = inflater.inflate(R.layout.item_list, parent, false);
-        MyViewHolder holder = new MyViewHolder(view, itemListener);
+        context = parent.getContext();
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list, parent, false);
+        MyViewHolder holder = new MyViewHolder(view);
         return holder;
     }
 
     @Override
-    public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull MyViewHolder holder, final int position) {
         //Log.e("Country Name", list.get(position).getCountryText());
         holder.txtCountryName.setText(list.get(position).getCountryText());
         holder.txtConfirmed.setText(list.get(position).getTotalCasesText());
         holder.txtRecovered.setText(list.get(position).getTotalRecoveredText());
         holder.txtDeaths.setText(list.get(position).getTotalDeathsText());
-        holder.txtLastUpdate.setText("  " + list.get(position).getLastUpdateText());
+        holder.txtLastUpdate.setText(list.get(position).getLastUpdateText());
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ItemModel model = list.get(position);
+                Intent intent = new Intent(context, DetailsActivity.class);
+                intent.putExtra("MyClass", (Serializable) model);
+                context.startActivity(intent);
+            }
+        });
     }
 
     @Override
@@ -62,39 +86,41 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.MyViewHolder> 
         @Override
         protected FilterResults performFiltering(CharSequence constraint) {
             ArrayList<ItemModel> filteredList = new ArrayList<>();
-            if (constraint == null || constraint.length() == 0)
-                filteredList.addAll(tempList);
-            else {
+            Log.e("filteredList", fullList.size() + "");
+            if (constraint == null || constraint.length() == 0) {
+                filteredList.addAll(fullList);
+            } else {
                 String filterPattern = constraint.toString().toLowerCase().trim();
-                for (ItemModel it : tempList)
+                for (ItemModel it : fullList) {
+                    if (it.getCountryText() == null)
+                        continue;
                     if (it.getCountryText().toLowerCase().contains(filterPattern))
                         filteredList.add(it);
+                }
             }
             FilterResults results = new FilterResults();
             results.values = filteredList;
+            Log.e("results.values", filteredList.size() + "");
             return results;
         }
 
         @Override
         protected void publishResults(CharSequence constraint, FilterResults results) {
             list.clear();
-            list.addAll((ArrayList)results.values);
+            list.addAll((ArrayList<ItemModel>) results.values);
             notifyDataSetChanged();
         }
     };
 
-    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+    public class MyViewHolder extends RecyclerView.ViewHolder {
         TextView txtCountryName;
         TextView txtConfirmed;
         TextView txtDeaths;
         TextView txtRecovered;
         TextView txtLastUpdate;
-        OnItemListener listener;
 
-        public MyViewHolder(@NonNull View itemView, OnItemListener listener) {
+        public MyViewHolder(@NonNull View itemView) {
             super(itemView);
-            this.listener = listener;
-            itemView.setOnClickListener(this);
             txtCountryName = itemView.findViewById(R.id.txt_view_country_name);
             txtDeaths = itemView.findViewById(R.id.txt_view_deaths);
             txtConfirmed = itemView.findViewById(R.id.txt_view_confirmed);
@@ -102,13 +128,5 @@ public class DataAdapter extends RecyclerView.Adapter<DataAdapter.MyViewHolder> 
             txtLastUpdate = itemView.findViewById(R.id.txt_view_lastupdate);
         }
 
-        @Override
-        public void onClick(View v) {
-            listener.onItemClick(getAdapterPosition());
-        }
-    }
-
-    public interface OnItemListener {
-        void onItemClick(int pos);
     }
 }

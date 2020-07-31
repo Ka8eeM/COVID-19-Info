@@ -1,24 +1,13 @@
-package com.example.testcovid;
+package com.ka8eem.testcovid.ui;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.net.Uri;
-import android.os.AsyncTask;
 import android.os.Bundle;
-import android.widget.ImageView;
 import android.widget.TextView;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
-import java.util.ArrayList;
-
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
+import com.ka8eem.testcovid.models.ItemModel;
+import com.ka8eem.testcovid.R;
 
 public class DetailsActivity extends AppCompatActivity {
     Intent intent;
@@ -37,6 +26,7 @@ public class DetailsActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_details);
+        setTitle("Details");
         intent = getIntent();
         model = (ItemModel) intent.getSerializableExtra("MyClass");
         txtCountryName = findViewById(R.id.country_name_detail_view);

@@ -1,74 +1,67 @@
-package com.example.testcovid;
+package com.ka8eem.testcovid.ui;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
+import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.MotionEvent;
-import android.view.View;
 import android.view.inputmethod.EditorInfo;
 import android.view.inputmethod.InputMethodManager;
-import android.widget.FrameLayout;
+
 import androidx.appcompat.widget.SearchView;
-import android.widget.TextView;
 
-import com.google.gson.Gson;
+import com.ka8eem.testcovid.models.ItemModel;
+import com.ka8eem.testcovid.R;
+import com.ka8eem.testcovid.adapters.DataAdapter;
+import com.ka8eem.testcovid.viewmodel.DataViewModel;
 
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.io.IOException;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import okhttp3.OkHttpClient;
-import okhttp3.Request;
-import okhttp3.Response;
-
 public class MainActivity extends AppCompatActivity {
 
-    public static RecyclerView recyclerView;
-    public static DataAdapter adapter;
-    public static ArrayList<ItemModel> list;
-    public static Context context;
+    public RecyclerView recyclerView;
+    public DataAdapter adapter;
+    DataViewModel dataViewModel;
+    ArrayList<ItemModel> list;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         recyclerView = findViewById(R.id.recycle_view);
         recyclerView.setLayoutManager(new LinearLayoutManager(MainActivity.this));
-        context = MainActivity.this;
-        loadData();
-    }
-    @Override
-    public boolean dispatchTouchEvent(MotionEvent ev) {
-        if (getCurrentFocus() != null) {
-            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
-        }
-        return super.dispatchTouchEvent(ev);
-    }
-    private void loadData() {
-        new FetechData().execute(Constants.url);
+        dataViewModel = ViewModelProviders.of(this).get(DataViewModel.class);
+        dataViewModel.getData();
+        adapter = new DataAdapter();
+        dataViewModel.mutableLiveData.observe(this, new Observer<ArrayList<ItemModel>>() {
+            @Override
+            public void onChanged(ArrayList<ItemModel> models) {
+                Log.e("model size", models.size() + "");
+                list = models;
+                adapter.setList(models);
+                recyclerView.setAdapter(adapter);
+            }
+        });
     }
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_item,menu);
+        getMenuInflater().inflate(R.menu.menu_item, menu);
         MenuItem menuItem = menu.findItem(R.id.search_icon);
-        SearchView searchView = (SearchView) menuItem.getActionView();
+        final SearchView searchView = (SearchView) menuItem.getActionView();
         searchView.setQueryHint("Enter Country Name to Search");
         searchView.setImeOptions(EditorInfo.IME_ACTION_DONE);
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
@@ -79,8 +72,9 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                Log.e("newText", newText);
                 adapter.getFilter().filter(newText);
-                return false;
+                return true;
             }
         });
         return true;
@@ -89,13 +83,10 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         int id = item.getItemId();
-        switch (id)
-        {
-            case R.id.empty:
-                break;
+        switch (id) {
             case R.id.search_icon:
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED,0);
+                imm.toggleSoftInput(InputMethodManager.SHOW_FORCED, 0);
                 break;
             case R.id.grid_view:
                 recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
@@ -105,8 +96,24 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.staggered_view:
                 recyclerView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+            default:
+                break;
         }
         return super.onOptionsItemSelected(item);
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+    }
+
+
+    @Override
+    public boolean dispatchTouchEvent(MotionEvent ev) {
+        if (getCurrentFocus() != null) {
+            InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+            imm.hideSoftInputFromWindow(getCurrentFocus().getWindowToken(), 0);
+        }
+        return super.dispatchTouchEvent(ev);
+    }
 }

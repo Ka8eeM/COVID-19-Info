@@ -1,6 +1,7 @@
-package com.example.testcovid;
+package com.ka8eem.testcovid.models;
 
 import com.google.gson.Gson;
+import com.google.gson.annotations.SerializedName;
 
 import org.json.JSONObject;
 
@@ -8,13 +9,21 @@ import java.io.Serializable;
 
 public class ItemModel implements Serializable {
 
+    @SerializedName("Active Cases_text")
     private String activeCasesText;
+    @SerializedName("Country_text")
     private String countryText;
+    @SerializedName("Last Update")
     private String lastUpdateText;
+    @SerializedName("New Cases_text")
     private String newCasesText;
+    @SerializedName("New Deaths_text")
     private String newDeathsText;
+    @SerializedName("Total Cases_text")
     private String totalCasesText;
+    @SerializedName("Total Deaths_text")
     private String totalDeathsText;
+    @SerializedName("Total Recovered_text")
     private String totalRecoveredText;
 
     public ItemModel() {}
@@ -57,38 +66,4 @@ public class ItemModel implements Serializable {
     public String getTotalRecoveredText() {
         return totalRecoveredText;
     }
-
-    public void setActiveCasesText(String activeCasesText) {
-        this.activeCasesText = activeCasesText;
-    }
-
-    public void setCountryText(String countryText) {
-        this.countryText = countryText;
-    }
-
-    public void setLastUpdateText(String lastUpdateText) {
-        this.lastUpdateText = lastUpdateText;
-    }
-
-    public void setNewCasesText(String newCasesText) {
-        this.newCasesText = newCasesText;
-    }
-
-    public void setNewDeathsText(String newDeathsText) {
-        this.newDeathsText = newDeathsText;
-    }
-
-    public void setTotalCasesText(String totalCasesText) {
-        this.totalCasesText = totalCasesText;
-    }
-
-    public void setTotalDeathsText(String totalDeathsText) {
-        this.totalDeathsText = totalDeathsText;
-    }
-
-    public void setTotalRecoveredText(String totalRecoveredText) {
-        this.totalRecoveredText = totalRecoveredText;
-    }
-
-
 }
