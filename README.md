@@ -7,6 +7,7 @@
 - MVVM design pattern
 - Singleton design pattern
 - REST APIs (Rertrofit library)
+- JAVA
 
 # Screenshots
 
